@@ -1,8 +1,12 @@
 # CSS and Polymer Presentation
 
+## Requiremnts
+
+    grunt
+    node
+    bower
+
 ## Install
-    
-    npm install -g grunt-cli # for Grunt
     
     npm install
     bower install
