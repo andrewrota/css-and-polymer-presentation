@@ -1,0 +1,26 @@
+{
+    "name": "css-and-polymer-presentation",
+    "version": "0.1.0",
+    "homepage": "https://github.com/andrewrota/css-and-polymer-presentation",
+    "authors": ["Andrew Rota <rota.andrew@gmail.com>"],
+    "moduleType": ["globals"],
+    "license": "MIT",
+    "private": true,
+    "ignore": ["**/.*", "node_modules", "bower_components", "test", "tests"],
+    "dependencies": {
+        "warpech-prism": "git://github.com/andrewrota/warpech-prism.git#master",
+        "prism": "git://github.com/LeaVerou/prism.git#gh-pages",
+        "web-component-slides": "git://github.com/andrewrota/web-component-slides.git#master",
+        "google-map": "*",
+        "paper-elements": "Polymer/paper-elements#~0.4.2",
+        "puzzle": "http://upload.wikimedia.org/wikipedia/commons/d/df/Jigsaw.png",
+        "twilight-zone-gif": "http://media.giphy.com/media/13nrhrHHfJSgOA/giphy.gif",
+        "chrome-logo": "https://raw.githubusercontent.com/alrra/browser-logos/master/chrome/chrome_128x128.png",
+        "opera-logo": "https://raw.githubusercontent.com/alrra/browser-logos/master/opera/opera_128x128.png",
+        "firefox-logo": "https://raw.githubusercontent.com/alrra/browser-logos/master/firefox/firefox_128x128.png",
+        "safari-logo": "https://raw.githubusercontent.com/alrra/browser-logos/master/safari/safari_128x128.png",
+        "ie-logo": "https://raw.githubusercontent.com/alrra/browser-logos/master/internet-explorer/internet-explorer_128x128.png",
+        "polymer-logo": "https://www.polymer-project.org/images/logos/p-logo.svg",
+        "sad-gif": "http://media.giphy.com/media/n7Kv7tLf2UzMk/giphy.gif"
+    }
+}

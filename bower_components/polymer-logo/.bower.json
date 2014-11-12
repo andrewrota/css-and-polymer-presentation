@@ -1,0 +1,12 @@
+{
+  "name": "polymer-logo",
+  "_cacheHeaders": {
+    "ETag": "\"UgSQGA\"",
+    "Content-Type": "image/svg+xml"
+  },
+  "_release": "e-tag:UgSQGA",
+  "main": "index.svg",
+  "_source": "https://www.polymer-project.org/images/logos/p-logo.svg",
+  "_target": "*",
+  "_originalSource": "https://www.polymer-project.org/images/logos/p-logo.svg"
+}
