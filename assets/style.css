@@ -1,9 +1,18 @@
+.unemphasize {
+  color: lightgray; }
+
+strong.emphasize {
+  font-size: 125%; }
+
 body {
   font-family: 'Open Sans', Helvetica, sans-serif;
   font-weight: 400;
   font-size: 185%;
   line-height: 1.2;
   color: #333333; }
+
+.no-underline {
+  text-decoration: none !important; }
 
 a {
   color: #EB6841;

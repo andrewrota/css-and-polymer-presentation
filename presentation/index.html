@@ -25,11 +25,24 @@
             <h2><a href="https://twitter.com/andrewrota" target="_blank" class="link-as-text">@AndrewRota</a> | Polymer Hack Day</h2>
         </slide-content>
         <slide-content>
+            <h1>CSS & Polymer == CSS & Web Components</h1>
+            <blockquote>
+                Styling Polymer elements is no different than styling custom elements.<br><span class="attr"><a href="https://www.polymer-project.org/docs/polymer/styling.html" target="_blank">- Polymer</a></span>
+            </blockquote>
+        </slide-content>
+        <slide-content>
             <h1>Web Components APIs</h1>
             <h2>Custom Elements</h2>
             <h2>HTML Templates</h2>
             <h2>HTML Imports</h2>
-            <h2><strong>Shadow DOM</strong></h2>
+            <h2>Shadow DOM</h2>
+        </slide-content>
+        <slide-content>
+            <h1>Web Components APIs</h1>
+            <h2 class="unemphasize">Custom Elements</h2>
+            <h2 class="unemphasize">HTML Templates</h2>
+            <h2 class="unemphasize">HTML Imports</h2>
+            <h2><strong class="emphasize">Shadow DOM</strong></h2>
         </slide-content>
         <slide-content>
             <img src="http://media.giphy.com/media/13nrhrHHfJSgOA/giphy.gif" alt="Prepare to enter the shadow DOM" data-reset class="gif">
@@ -40,14 +53,6 @@
 document.getElementById('my-element').createShadowRoot();
 // Access Shadow Root
 document.getElementById('my-element').shadowRoot;</code-prism>
-        </slide-content>
-        <slide-content>
-            <h1>User Agent Shadow DOM</h1>
-            <code-prism language="markup">&lt;video src=&quot;#&quot; controls&gt;&lt;/video&gt;</code-prism>
-            <br>
-            <div class="video-container">
-                <video src="#" controls></video>
-            </div>
         </slide-content>
         <slide-content>
             <h1>User Agent Shadow DOM</h1>
@@ -114,19 +119,121 @@ s.innerHTML += '&lt;content select=".name"&gt;&lt;/content&gt;!';
         </slide-content>
         <slide-content>
             <h1>Into the Dark</h1>
-            <code-prism language="css">/* pseudo-element for shadow roots */ ::shadow { }</code-prism>
+            <code-prism language="css">/* pseudo-element for shadow roots */
+::shadow { }</code-prism>
             <br>
-            <code-prism language="css">/* combinator for selecting through shadow boundaries */ body /deep/ p { }</code-prism>
+            <code-prism language="css">/* combinator for selecting through shadow boundaries */
+body /deep/ p { }</code-prism>
             <blockquote>[<code>/deep/</code>] is basically a <strong>super-descendant</strong> combinator.
                 <br><span class="attr"><a href="http://dev.w3.org/csswg/css-scoping/#issue-250ee37f" target="_blank">- CSS Scoping Module Draft, Issue 6</a></span>
             </blockquote>
 
+        </slide-content>
+        <slide-content class="center-slide">
+            <h1><code>:unresolved</code></h1>
         </slide-content>
         <slide-content>
             <div class="center-child" style="padding: 2em;">
                 <br>
                 <img class="half-width" src="../bower_components/polymer-logo/index.svg" alt="Polymer">
             </div>
+        </slide-content>
+        <slide-content>
+            <a href="https://github.com/polymer/ShadowDOM" target="_blank" class="no-underline"><h1>Polyfilling the Shadow DOM</h1></a>
+            <blockquote>
+                Because polyfilling the styling behaviors of Shadow DOM is difficult, <strong>Polymer has opted to favor practicality and performance over correctness</strong>. <br><span class="attr"><a href="https://www.polymer-project.org/docs/polymer/styling.html" target="_blank">- Polymer</a></span>
+            </blockquote>
+        </slide-content>
+        <slide-content>
+            <h1>How it Works</h1>
+            <h2>Selectors are prepended with element descendent selectors</h2>
+            <code-prism language="css">.underline { text-decoration: underline }</code-prism>
+            <h2>... is reformated to:</h2>
+            <code-prism language="css">x-foo .underline { text-decoration: underline }</code-prism>
+        </slide-content>
+        <slide-content>
+            <h1>How it Works</h1>
+            <h2>:host and :host() are replaced by element selectors</h2>
+            <code-prism language="css">:host { color: #333333; }
+:host(.blue) { color: #000080 }</code-prism>
+            <h2>... is reformated to:</h2>
+            <code-prism language="css">x-element { color: #333333; }
+x-element.blue { color: #000080 }</code-prism>
+        </slide-content>
+        <slide-content>
+            <h1>Lower Bound Encapsulation</h1>
+            <br>
+            <code-prism>Platform.ShadowCSS.strictStyling = true;</code-prism>
+            <br><br>
+            <code-prism language="markup">&lt;span x-element&gt;&lt;/span&gt;</code-prism>
+        </slide-content>
+        <slide-content>
+            <h1>Polyfill Limitations</h1>
+                <h2>Full style encapsulation</h2>
+                <h2>:host() supports one level of functional arguments</h2>
+        </slide-content>
+        <slide-content class="center-slide">
+            <h1>Paper Elements</h1>
+        </slide-content>
+        <slide-content>
+        <h1>Style the Paper Slider</h1>
+            <div class="ui-example">
+                <paper-slider value="10"></paper-slider>
+            <br>
+            <br>
+            <code-prism language="markup">&lt;paper-slider value=&quot;10&quot;&gt;&lt;/paper-slider&gt;</code-prism>
+            </div>
+        </slide-content>
+        <slide-content>
+            <h1>Style the Paper Slider</h1>
+            <code-prism language="css">paper-slider { width: 95%; }
+paper-slider::shadow #sliderBar::shadow #activeProgress {
+  background-color: #91D4D4;
+}
+paper-slider::shadow #sliderKnobInner {
+  background-color: #b68abd;
+}
+paper-slider::shadow #sliderKnobInner::before {
+  background-color: #b68abd;
+}
+paper-slider::shadow #sliderKnobInner::after {
+  color: #b68abd;
+}</code-prism>
+        </slide-content>
+        <slide-content>
+        <h1>Style the Paper Input</h1>
+            <div class="ui-example">
+                <paper-input label="Type something here." required="" error="This is a required field." layout="" vertical="" class="invalid"></paper-input>
+            <code-prism language="markup">&lt;paper-input
+  label=&quot;Type something here.&quot;
+  error=&quot;This is a required field.&quot;
+  layout required vertical
+  class=&quot;invalid&quot;&gt;
+&lt;/paper-input&gt;</code-prism>
+            </div>
+        </slide-content>
+        <slide-content>
+            <h1>Style the Paper Input</h1>
+            <code-prism language="css">paper-input {
+  width: 90%;
+}
+paper-input /deep/ .cursor,
+paper-input /deep/ .focused-underline {
+    background-color: #784880;
+}</code-prism>
+            <br>
+        </slide-content>
+        <slide-content>
+            <h1>Thanks!</h1>
+            <h2>Resources</h2>
+            <ul class="small-list">
+                <li>Polymer's <a href="https://www.polymer-project.org/articles/styling-elements.html" target="_blank">A Guide to Styling Elements</a></li>
+                <li><a href="http://webcomponents.org/" target="_blank">WebComponents.org</a></li>
+                <li><a href="https://developers.google.com/events/io/sessions/318907648" target="_blank">Web Components: A Tectonic Shift for Web Development</a> by Eric Bidelman</li>
+                <li><a href="http://shop.oreilly.com/product/0636920032922.do" target="_blank"><em>Web Components</em></a> by Jarrod Overson and Jason Strimpel</li>
+            </ul>
+            <h2>Colophon</h2>
+            <p>This presentation was built with Shadow DOM, HTML Templates, HTML Imports, and the Custom Elements <code>&lt;slide-show&gt;</code> and <code>&lt;slide-content&gt;</code> using <a href="https://github.com/andrewrota/web-component-slides" target="_blank">Web Component Slides</a>.</p>
         </slide-content>
     </slide-show>
     <script src="../assets/script.js"></script>
